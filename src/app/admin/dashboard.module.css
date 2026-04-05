@@ -1,0 +1,102 @@
+.loading {
+  padding: 4rem;
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.content {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.alert {
+  background: #fef9c3;
+  border: 1px solid #facc15;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 0.88rem;
+  color: #854d0e;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.alertItem {
+  background: rgba(0,0,0,0.06);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.alertLink {
+  margin-left: auto;
+  font-weight: 600;
+  color: #854d0e;
+  text-decoration: underline;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionHeader h2 {
+  font-size: 1.1rem;
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 700;
+}
+
+.viewAll {
+  font-size: 0.82rem;
+  color: #e8830c;
+  font-weight: 600;
+}
+
+.quickActions h2 {
+  font-size: 1.1rem;
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.actionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.actionCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.actionCard:hover {
+  border-color: #e8830c;
+  color: #e8830c;
+  box-shadow: 0 2px 8px rgba(232,131,12,0.1);
+}

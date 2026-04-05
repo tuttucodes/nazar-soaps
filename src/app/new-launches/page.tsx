@@ -1,17 +1,26 @@
 import PageShell from '@/components/PageShell';
 import ProductGrid, { GridProduct } from '@/components/ProductGrid';
+import { createServerClient } from '@/lib/supabase/server';
 
-const NEW_LAUNCHES: GridProduct[] = [
-  { id: 'n1', slug: 'rockstar-serum', name: 'Rockstar Advanced Hair Growth Serum', price: 499, originalPrice: 777, description: 'India\'s 1st Blue Pea powered hair growth serum with 4% Anagain & 3% Redensyl.', badge: 'New Launch' },
-  { id: 'n2', slug: 'retinol-night-cream', name: 'Retinol 0.5% Night Repair Cream', price: 799, originalPrice: 999, description: 'Advanced night cream with encapsulated retinol for anti-aging.', badge: 'New Launch' },
-  { id: 'n3', slug: 'aha-bha-toner', name: 'AHA BHA Exfoliating Toner', price: 449, originalPrice: 599, description: 'Gentle exfoliating toner that unclogs pores and smooths texture.', badge: 'New Launch' },
-  { id: 'n4', slug: 'lip-balm-set', name: 'Tinted Lip Balm Set (3 shades)', price: 349, originalPrice: 499, description: 'Moisturizing lip balms with natural tint in Rose, Berry & Nude.', badge: 'New Launch' },
-];
+export default async function NewLaunchesPage() {
+  const supabase = await createServerClient();
+  const { data: products } = await supabase
+    .from('products')
+    .select('*')
+    .eq('status', 'active')
+    .eq('is_new_launch', true)
+    .order('created_at', { ascending: false });
 
-export default function NewLaunchesPage() {
+  const items: GridProduct[] = (products || []).map(p => ({
+    id: p.id, slug: p.slug, name: p.name, price: p.price,
+    originalPrice: p.original_price ?? undefined,
+    description: p.short_description || undefined,
+    badge: p.badge || 'New Launch',
+  }));
+
   return (
     <PageShell>
-      <ProductGrid title="New Launches" products={NEW_LAUNCHES} />
+      <ProductGrid title="New Launches" products={items} />
     </PageShell>
   );
 }

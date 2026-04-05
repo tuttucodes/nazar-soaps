@@ -1,16 +1,28 @@
 import PageShell from '@/components/PageShell';
 import ProductGrid, { GridProduct } from '@/components/ProductGrid';
+import { createServerClient } from '@/lib/supabase/server';
 
-const PRODUCTS: GridProduct[] = [
-  { id: 'a1', slug: 'neem-soap', name: 'Neem & Tea Tree Anti-Acne Soap', price: 219, originalPrice: 279, description: 'Antibacterial soap that fights acne and blemishes.', badge: 'For Acne' },
-  { id: 'a2', slug: 'charcoal-soap', name: 'Activated Charcoal Detox Soap', price: 249, originalPrice: 349, description: 'Deep cleansing charcoal soap that draws out impurities.' },
-  { id: 'a3', slug: 'aha-bha-toner', name: 'AHA BHA Exfoliating Toner', price: 449, originalPrice: 599, description: 'Gentle exfoliating toner that unclogs pores and smooths texture.' },
-];
+export default async function AcnePage() {
+  const supabase = await createServerClient();
+  const { data: concern } = await supabase.from('concerns').select('id').eq('slug', 'acne').single();
+  let products: GridProduct[] = [];
+  if (concern) {
+    const { data: links } = await supabase.from('product_concerns').select('product_id').eq('concern_id', concern.id);
+    if (links && links.length > 0) {
+      const ids = links.map(l => l.product_id);
+      const { data } = await supabase.from('products').select('*').eq('status', 'active').in('id', ids);
+      products = (data || []).map(p => ({
+        id: p.id, slug: p.slug, name: p.name, price: p.price,
+        originalPrice: p.original_price ?? undefined,
+        description: p.short_description || undefined,
+        badge: p.badge ?? undefined,
+      }));
+    }
+  }
 
-export default function AcnePage() {
   return (
     <PageShell>
-      <ProductGrid title="Acne Solutions" products={PRODUCTS} />
+      <ProductGrid title="Acne Solutions" products={products} />
     </PageShell>
   );
 }

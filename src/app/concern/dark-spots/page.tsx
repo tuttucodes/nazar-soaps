@@ -1,16 +1,28 @@
 import PageShell from '@/components/PageShell';
 import ProductGrid, { GridProduct } from '@/components/ProductGrid';
+import { createServerClient } from '@/lib/supabase/server';
 
-const PRODUCTS: GridProduct[] = [
-  { id: 'd1', slug: 'kojic-acid-soap', name: 'Kojic Acid 2% Soap with Niacinamide', price: 399, originalPrice: 499, description: 'Brightening soap that targets dark spots and uneven tone.', badge: 'Popular' },
-  { id: 'd2', slug: 'vitamin-c-serum', name: 'Vitamin C Brightening Serum', price: 599, originalPrice: 799, description: 'Potent vitamin C serum for dark spots and dull skin.' },
-  { id: 'd3', slug: 'magic-cream', name: 'Magic Cream with Saffron & Niacinamide', price: 999, originalPrice: 1200, description: 'Luxurious face cream for brightening and hydration.' },
-];
+export default async function DarkSpotsPage() {
+  const supabase = await createServerClient();
+  const { data: concern } = await supabase.from('concerns').select('id').eq('slug', 'dark-spots').single();
+  let products: GridProduct[] = [];
+  if (concern) {
+    const { data: links } = await supabase.from('product_concerns').select('product_id').eq('concern_id', concern.id);
+    if (links && links.length > 0) {
+      const ids = links.map(l => l.product_id);
+      const { data } = await supabase.from('products').select('*').eq('status', 'active').in('id', ids);
+      products = (data || []).map(p => ({
+        id: p.id, slug: p.slug, name: p.name, price: p.price,
+        originalPrice: p.original_price ?? undefined,
+        description: p.short_description || undefined,
+        badge: p.badge ?? undefined,
+      }));
+    }
+  }
 
-export default function DarkSpotsPage() {
   return (
     <PageShell>
-      <ProductGrid title="Dark Spots Solutions" products={PRODUCTS} />
+      <ProductGrid title="Dark Spots Solutions" products={products} />
     </PageShell>
   );
 }
