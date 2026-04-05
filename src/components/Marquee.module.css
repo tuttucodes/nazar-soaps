@@ -1,0 +1,41 @@
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.75rem 0;
+}
+
+.default {
+  background-color: var(--cream);
+  color: var(--foreground);
+}
+
+.orange {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.track {
+  display: inline-flex;
+  animation: scroll 30s linear infinite;
+}
+
+.item {
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0 1rem;
+  white-space: nowrap;
+}
+
+.separator {
+  margin-left: 1rem;
+  opacity: 0.5;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
