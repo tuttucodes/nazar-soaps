@@ -1,0 +1,29 @@
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.4rem 0;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+}
+
+.marqueeContent {
+  display: inline-block;
+  animation: marquee 35s linear infinite;
+  white-space: nowrap;
+}
+
+.marqueeItem {
+  display: inline-block;
+  font-family: var(--font-oswald), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding-right: 2rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}

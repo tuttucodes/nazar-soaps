@@ -1,21 +1,30 @@
+import Marquee from './Marquee';
 import styles from './Hero.module.css';
 
 export default function Hero() {
   return (
-    <section className={styles.hero}>
-      <div className={styles.heroContent}>
-        <h1 className={styles.title}>Embrace Your Natural Glow</h1>
-        <p className={styles.subtitle}>Chemical-free, organic skincare products that nourish and heal your skin. Tested by experts, loved by over a million customers.</p>
-        <div className={styles.btngroup}>
-          <button className="btn-primary">Shop Now</button>
-          <button className={styles.btnOutline}>Take the Skin Quiz</button>
+    <section className={styles.heroSection}>
+      <div className={styles.heroBanner}>
+        <div className={styles.heroContent}>
+          <div className={styles.badge}>
+            <span className={styles.stars}>✦ ✦ ✦</span>
+            <h2>Pankaj Tripathi<br/>RECOMMENDED</h2>
+            <p>DESI MAGIC, SOLID LOGIC</p>
+          </div>
+          
+          <div className={styles.mainTitleGroup}>
+            <h1 className={styles.heroTitle}>DE-TAN</h1>
+            <p className={styles.heroTitleSub}>ka</p>
+            <h1 className={styles.heroTitleBold}>EXPERT</h1>
+          </div>
+          <p className={styles.heroTagline}>Ghar Soaps Magic Soap</p>
+          
+          <button className={styles.shopNowBtn}>Shop Now</button>
         </div>
       </div>
-      <div className={styles.heroImageContainer}>
-        <div className={styles.heroImagePlaceholder}>
-          <div className={styles.glassBadge}>100% Organic</div>
-        </div>
-      </div>
+      
+      {/* Marquee matching the exact text in screenshot */}
+      <Marquee text="Bringing The Comfort of Home to Your Daily Routine." backgroundColor="var(--primary)" />
     </section>
   );
 }

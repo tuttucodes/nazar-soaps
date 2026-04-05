@@ -3,63 +3,138 @@
   top: 0;
   z-index: 50;
   background-color: var(--background);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 0;
+  width: 100%;
 }
 
-.container {
+.promoBar {
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.mainHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  padding: 1.5rem 2rem;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
-.navLinks {
+.leftSection {
   display: flex;
-  gap: 2rem;
-  flex: 1;
-}
-
-.link {
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.logoContainer {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.logo {
-  font-family: var(--font-playfair), serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--foreground);
-  letter-spacing: 2px;
-}
-
-.actions {
-  display: flex;
+  align-items: center;
   gap: 1.5rem;
   flex: 1;
-  justify-content: flex-end;
+}
+
+.shopAll {
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.searchBar {
+  position: relative;
+  display: flex;
   align-items: center;
+  width: 100%;
+  max-width: 250px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  border-radius: 50px;
+  border: 1px solid #777;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #111;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  color: #333;
+}
+
+.logoSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logoGrid {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  position: relative;
+}
+
+.logoMain {
+  font-family: var(--font-oswald), sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.logoSup {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  position: absolute;
+  right: -35px;
+  bottom: 8px;
+}
+
+.logoSub {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 2px;
+  color: #444;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.trackShipment {
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .iconBtn {
   background: none;
   border: none;
   color: var(--foreground);
-  position: relative;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: color 0.2s;
+  position: relative;
 }
 
 .iconBtn:hover {
@@ -68,16 +143,42 @@
 
 .cartCount {
   position: absolute;
-  top: -8px;
+  top: -6px;
   right: -8px;
   background-color: var(--primary);
   color: white;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: bold;
-  height: 18px;
-  width: 18px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.secondaryNav {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 0;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navList li a {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .leftSection, .rightSection {
+    display: none;
+  }
 }

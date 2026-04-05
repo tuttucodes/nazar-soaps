@@ -1,23 +1,20 @@
 :root {
-  --background: #fafafa;
+  --background: #fdfaf5; /* Cream background matching screenshots */
   --foreground: #111111;
-  --primary: #dcb388; /* A nice earthy gold/saffron color */
-  --primary-hover: #c69b70;
-  --secondary: #e6cec0; /* Sandalwood tint */
-  --accent: #2e3c23; /* Earthy green */
+  --primary: #e66e28;    /* Orange from tickers */
+  --primary-hover: #c95d1f;
+  --secondary: #222222;
+  --accent: #ffcc00;     /* Yellow from marquee */
   --danger: #cf4f4f;
-  --border: #e0e0e0;
+  --success: #36a246;    /* Green discount text */
+  --border: #dfd8cf;     /* Darker cream for borders */
 }
 
 @media (prefers-color-scheme: dark) {
+  /* Enforce light theme aesthetic for exact brand match */
   :root {
-    --background: #121212;
-    --foreground: #f4f4f4;
-    --primary: #dcb388;
-    --primary-hover: #ecc8a2;
-    --secondary: #3b302a;
-    --accent: #556c42;
-    --border: #333333;
+    --background: #fdfaf5; 
+    --foreground: #111111;
   }
 }
 
@@ -38,14 +35,16 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-outfit), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-oswald), sans-serif;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 * {
@@ -70,25 +69,18 @@ button {
 }
 
 .btn-primary {
-  background-color: var(--primary);
+  background-color: var(--foreground);
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 4px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: background-color 0.2s ease;
+  width: 100%;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-hover);
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  .btn-primary {
-    color: #111;
-  }
+  background-color: #333;
 }
