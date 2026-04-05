@@ -2,24 +2,26 @@ import styles from './Marquee.module.css';
 
 interface MarqueeProps {
   text: string;
-  backgroundColor?: string;
-  textColor?: string;
+  variant?: 'orange' | 'default';
 }
 
-export default function Marquee({ text, backgroundColor = 'var(--primary)', textColor = '#000' }: MarqueeProps) {
-  // Creating an array of text to ensure the marquee fills the screen and scrolls smoothly
-  const items = Array(15).fill(text);
+export default function Marquee({ text, variant = 'default' }: MarqueeProps) {
+  const items = Array(8).fill(text);
 
   return (
-    <div className={styles.marqueeContainer} style={{ backgroundColor, color: textColor }}>
-      <div className={styles.marqueeContent}>
-        {items.map((item, index) => (
-          <span key={index} className={styles.marqueeItem}>{item}</span>
+    <div className={`${styles.marquee} ${variant === 'orange' ? styles.orange : styles.default}`}>
+      <div className={styles.track}>
+        {items.map((t, i) => (
+          <span key={i} className={styles.item}>
+            {t}
+            <span className={styles.separator}>&bull;</span>
+          </span>
         ))}
-      </div>
-      <div className={styles.marqueeContent} aria-hidden="true">
-        {items.map((item, index) => (
-          <span key={index + items.length} className={styles.marqueeItem}>{item}</span>
+        {items.map((t, i) => (
+          <span key={`dup-${i}`} className={styles.item}>
+            {t}
+            <span className={styles.separator}>&bull;</span>
+          </span>
         ))}
       </div>
     </div>

@@ -1,30 +1,39 @@
-import Marquee from './Marquee';
+import Link from 'next/link';
 import styles from './Hero.module.css';
 
 export default function Hero() {
   return (
-    <section className={styles.heroSection}>
-      <div className={styles.heroBanner}>
-        <div className={styles.heroContent}>
-          <div className={styles.badge}>
-            <span className={styles.stars}>✦ ✦ ✦</span>
-            <h2>Pankaj Tripathi<br/>RECOMMENDED</h2>
-            <p>DESI MAGIC, SOLID LOGIC</p>
+    <section className={styles.hero}>
+      <div className={styles.heroInner}>
+        <div className={styles.heroLeft}>
+          <div className={styles.logoBadge}>
+            <span className={styles.badgeBrand}>Nazar</span>
+            <span className={styles.badgeSub}>Soaps</span>
           </div>
-          
-          <div className={styles.mainTitleGroup}>
+        </div>
+        <div className={styles.heroCenter}>
+          <div className={styles.productShowcase}>
+            <div className={styles.productPlaceholder}>
+              <span>Product Image</span>
+            </div>
+          </div>
+        </div>
+        <div className={styles.heroRight}>
+          <div className={styles.heroTagline}>
             <h1 className={styles.heroTitle}>DE-TAN</h1>
-            <p className={styles.heroTitleSub}>ka</p>
-            <h1 className={styles.heroTitleBold}>EXPERT</h1>
+            <p className={styles.heroKa}>ka</p>
+            <h2 className={styles.heroExpert}>EXPERT</h2>
+            <p className={styles.heroProductName}>Nazar Soaps Magic Soap</p>
           </div>
-          <p className={styles.heroTagline}>Ghar Soaps Magic Soap</p>
-          
-          <button className={styles.shopNowBtn}>Shop Now</button>
+          <Link href="/shop" className={styles.shopNowBtn}>Shop Now</Link>
         </div>
       </div>
-      
-      {/* Marquee matching the exact text in screenshot */}
-      <Marquee text="Bringing The Comfort of Home to Your Daily Routine." backgroundColor="var(--primary)" />
+
+      {/* Slide indicators */}
+      <div className={styles.indicators}>
+        <span className={`${styles.dot} ${styles.dotActive}`}></span>
+        <span className={styles.dot}></span>
+      </div>
     </section>
   );
 }

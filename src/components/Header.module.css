@@ -1,32 +1,32 @@
+.announcementBar {
+  background-color: var(--dark-bg);
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: var(--background);
-  width: 100%;
+  background-color: var(--cream);
+  border-bottom: 1px solid var(--border);
 }
 
-.promoBar {
-  background-color: #1a1a1a;
-  color: #fff;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.mainHeader {
+.topRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0.75rem 2rem;
 }
 
-.leftSection {
+.leftActions {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -34,106 +34,97 @@
 }
 
 .shopAll {
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   white-space: nowrap;
 }
 
 .searchBar {
-  position: relative;
   display: flex;
   align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 220px;
   width: 100%;
-  max-width: 250px;
 }
 
 .searchInput {
-  width: 100%;
-  padding: 0.6rem 2.5rem 0.6rem 1rem;
-  border-radius: 50px;
-  border: 1px solid #777;
-  background: transparent;
-  font-family: inherit;
-  font-size: 0.9rem;
-}
-
-.searchInput:focus {
+  border: none;
   outline: none;
-  border-color: #111;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--foreground);
+  width: 100%;
+  font-family: inherit;
 }
 
-.searchIcon {
-  position: absolute;
-  right: 12px;
-  color: #333;
+.searchBtn {
+  background: none;
+  border: none;
+  padding: 0.5rem 0.6rem;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
 }
 
-.logoSection {
-  flex: 1;
+.logoContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  text-decoration: none;
+  color: var(--foreground);
+  flex-shrink: 0;
 }
 
-.logoGrid {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  position: relative;
-}
-
-.logoMain {
-  font-family: var(--font-oswald), sans-serif;
-  font-size: 2.5rem;
+.logoText {
+  font-family: var(--font-playfair), serif;
+  font-size: 2.8rem;
   font-weight: 700;
   line-height: 1;
-}
-
-.logoSup {
-  font-family: var(--font-inter), sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  position: absolute;
-  right: -35px;
-  bottom: 8px;
+  color: var(--foreground);
 }
 
 .logoSub {
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-family: var(--font-playfair), serif;
+  font-size: 1rem;
+  font-weight: 400;
   letter-spacing: 2px;
-  margin-top: 2px;
-  color: #444;
+  margin-top: -4px;
+  color: var(--foreground);
 }
 
-.rightSection {
+.logoTagline {
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #888;
+  margin-top: 2px;
+}
+
+.rightActions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 1.5rem;
   flex: 1;
+  justify-content: flex-end;
 }
 
-.trackShipment {
-  font-weight: 700;
+.trackLink {
   font-size: 0.9rem;
+  font-weight: 500;
   white-space: nowrap;
-}
-
-.icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 }
 
 .iconBtn {
   background: none;
   border: none;
   color: var(--foreground);
-  cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
   position: relative;
 }
 
@@ -141,44 +132,70 @@
   color: var(--primary);
 }
 
-.cartCount {
-  position: absolute;
-  top: -6px;
-  right: -8px;
-  background-color: var(--primary);
-  color: white;
-  font-size: 0.7rem;
-  font-weight: bold;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
+/* Navigation */
+.nav {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.secondaryNav {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 0.8rem 0;
-}
-
-.navList {
-  list-style: none;
-  display: flex;
-  justify-content: center;
   gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0.75rem 2rem;
+  border-top: 1px solid var(--border);
 }
 
-.navList li a {
-  font-weight: 700;
+.navLink {
   font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.navDropdown {
+  position: relative;
 }
 
 @media (max-width: 900px) {
-  .leftSection, .rightSection {
+  .topRow {
+    padding: 0.5rem 1rem;
+  }
+
+  .searchBar {
+    max-width: 150px;
+  }
+
+  .trackLink {
     display: none;
+  }
+
+  .nav {
+    gap: 1.5rem;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0.6rem 1rem;
+  }
+
+  .logoText {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .shopAll {
+    display: none;
+  }
+
+  .nav {
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .announcementBar {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
   }
 }
